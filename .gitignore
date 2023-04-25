@@ -8,6 +8,12 @@ __pycache__/
 
 landmask/*
 !landmask/.gitkeep
+examples/*
+data/*
+!examples/.gitkeep
+!data/*gitkeep
+!examples/download_calibrate_speckle.ipynb
+
 # Distribution / packaging
 .Python
 .dist
