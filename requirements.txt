@@ -11,5 +11,5 @@ lxml
 matplotlib
 Pillow
 scikit-learn
-contextily
+
   
