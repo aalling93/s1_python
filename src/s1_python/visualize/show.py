@@ -4,6 +4,8 @@ import numpy as np
 import requests
 from matplotlib import rc
 from PIL import Image
+import geopandas as gpd
+import matplotlib.pyplot as plt
 
 
 def show_thumbnail_function(
@@ -101,6 +103,28 @@ def show_cross_pol_function(
             pass
 
     plt.show()
+
+
+def plot_polygon(gdf):
+    """
+    Plotting polygons from a gdf.
+    """
+    minx, miny, maxx, maxy = gdf.geometry.total_bounds
+    df_world = gpd.read_file(gpd.datasets.get_path('naturalearth_lowres'))
+    f, ax = plt.subplots()
+    df_world.plot(ax=ax, color="lightgrey")
+    gdf.plot(ax=ax, color='cadetblue',alpha=0.1, edgecolor='k')
+    ax.set_xlim(minx - 1, maxx + 1) # added/substracted value is to give some margin around total bounds
+    ax.set_ylim(miny - 1, maxy + 1)
+    ax.grid('on', which='minor', axis='x' )
+    ax.grid('on', which='major', axis='x' )
+    ax.grid('on', which='minor', axis='y' )
+    ax.grid('on', which='major', axis='y')
+
+    plt.show()
+    del df_world
+
+    return None
 
 
 
