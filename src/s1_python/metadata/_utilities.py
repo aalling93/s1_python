@@ -1,4 +1,3 @@
-import mgrs
 import numpy as np
 from sentinelsat import geojson_to_wkt
 
@@ -25,23 +24,6 @@ def intersect_ids(products_df):
     names = [name + "_" + str(missionid[ix]) for ix, name in enumerate(names)]
     return names
 
-
-def add_mgcs(df):
-    try:
-        del df["mgcs"]
-    except:
-        pass
-    m = mgrs.MGRS()
-    lon = df.geometry.to_crs(4326).centroid.x.values
-    lat = df.geometry.to_crs(4326).centroid.y.values
-    mgc = []
-    for i in range(len(lat)):
-        mg = (m.toMGRS(lat[i], lon[i]))[0:]
-        mgc.append(mg[0:5])
-    mgc = np.array(mgc)
-    df["mgcs"] = mgc
-
-    return df
 
 
 def get_area(bbox: list = []):

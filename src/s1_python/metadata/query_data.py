@@ -1,5 +1,4 @@
 from sentinelsat import SentinelAPI
-from ._utilities import add_mgcs
 
 
 def get_s2_metadata_area(
@@ -75,7 +74,6 @@ def get_s1_grd_metadata_area(
         platformname="Sentinel-1",
     )
     products_df = api.to_geodataframe(products)
-    products_df = add_mgcs(products_df)
     return products_df
 
 
