@@ -1,0 +1,16 @@
+# You need Python3..
+
+# external requirements
+geopandas
+requests
+mgrs
+numpy
+sentinelsat
+scipy
+lxml
+matplotlib
+Pillow
+scikit-learn
+
+
+  
