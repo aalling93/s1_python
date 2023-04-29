@@ -8,14 +8,15 @@ import getpass
 class Sentinel_metadata:
     """'"""
 
-    def __init__(self, fontsize: int = 32):
+    def __init__(self, new_username:str = '', new_password:str = '', fontsize: int = 32):
         super(Sentinel_metadata, self).__init__()
-
-        try:
-            new_username = raw_input("Username for Copernicus Hub: ")
-        except NameError:
-            new_username = input("Username for Copernicus Hub: ")
-        new_password = getpass.getpass(prompt="Password (will not be displayed): ")
+        if len(new_username)==0: 
+            try:
+                new_username = raw_input("Username for Copernicus Hub: ")
+            except NameError:
+                new_username = input("Username for Copernicus Hub: ")
+        if len(new_password)==0:
+            new_password = getpass.getpass(prompt="Password (will not be displayed): ")
 
         self.USERNAME = new_username
         self.PASSWORD = new_password
